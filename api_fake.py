@@ -1,20 +1,14 @@
-from flask import Flask, jsonify
+from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/api/users')
-def get_users():
-    return jsonify({
-        "page": 1,
-        "per_page": 6,
-        "total": 12,
-        "total_pages": 2,
-        "data": [
-            {"id": 1, "name": "Mylena"},
-            {"id": 2, "name": "João"},
-            {"id": 3, "name": "Maria"}
-        ]
-    })
+@app.route("/")
+def homepage():
+    return "Homepage OK"
 
-if __name__ == '__main__':
+@app.route("/api/fake")
+def fake_api():
+    return {"message": "API fake funcionando"}
+
+if __name__ == "__main__":
     app.run(port=5000)
